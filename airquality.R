@@ -37,6 +37,8 @@ str(airquality)
 na<- na.omit(airquality)
 print(na)
 
+str(na)
+
 #summarise cleaned dataset
 summary(na)
 
@@ -90,8 +92,14 @@ print(log_fit_all)
 #Model LDA1 with one predictor
 library(class)
 #fit the model
-set.seed(7)
-fit.knn <- train(Method~Ozone, data=na, method="knn", metric=metric, trControl=control)
-print
+#set.seed(7)
+#fit.knn <- train(Method~Ozone, data=na, method="knn", metric=metric, trControl=control)
+#print(fit.knn)
 
-prc_test_pred <- knn(train = prc_train, test = prc_test,cl = prc_train_labels, k=10)
+Modelm <- lm(Month~Ozone+ Solar.R+ Temp+ Wind, data = na)
+print(Modelm)
+
+#anova
+Anova(Modelm)
+#Results
+results <- resamples(lis
